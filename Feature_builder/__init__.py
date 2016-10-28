@@ -3,7 +3,7 @@
 from Feature_builder.RawDataModel import RawData
 import mysql.connector
 
-raw_data_file="tainset"
+raw_data_file="'/Users/ASH/Desktop/Ad/dataExtract/read.csv'"
 def get_all_ip(table):
     """
     :param table: str
