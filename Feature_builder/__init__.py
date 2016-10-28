@@ -3,7 +3,7 @@
 from Feature_builder.RawDataModel import RawData
 import mysql.connector
 
-
+raw_data_file="tainset"
 def get_all_ip(table):
     """
     :param table: str
@@ -36,6 +36,7 @@ def get_total_click(ip):
     :param ip: str
     :rtype: int
     """
+
     pass
 
 
