@@ -3,7 +3,7 @@ import json
 class RawData:
     def __init__(self, line):
         line.replace("\n", "")
-        line = line.split("\x01")
+        line = line.split(",")
         self.rank = int(line[0])
         self.dt = int(line[1])
         self.cookie = line[2]
