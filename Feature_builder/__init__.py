@@ -10,11 +10,11 @@ def get_all_ip(table):
     :rtype: list
     :return: list of ip
     """
-    ip_list=list()
+    ip_list = list()
     conn = mysql.connector.connect(user='root', password='1995', database='admaster', use_unicode=True)
     cursor = conn.cursor()
     cursor.execute(r"select distinct(%s.ip) from %s", (table, table))
-    result=cursor.fetchall()
+    result = cursor.fetchall()
     for one in result:
         ip_list.append(one)
     conn.commit()
@@ -27,7 +27,7 @@ def line_to_model(line):
     :param line: str
     :rtype: RawData
     """
-    model=RawData(line)
+    model = RawData(line)
     return model
 
 
@@ -37,7 +37,6 @@ def get_total_click(ip):
     :rtype: int
     """
     pass
-
 
 
 def get_avg_click_sec(ip):
@@ -245,6 +244,7 @@ def get_total_cookies(ip):
     :return: num
     """
     pass
+
 
 def get_avg_new_cookies_day(ip):
     """

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from Feature_builder import *
+
 if __name__ == "__main__":
     # change the table name to read the raw data from database
-    data_source="trainset"
+    data_source = "trainset"
     features_output = open(r"{0}_features.csv".format(data_source), 'w')
     ip_list = get_all_ip(data_source)
     for ip in ip_list:
@@ -39,4 +40,3 @@ if __name__ == "__main__":
         features_output.write("{0}\n".format(str(get_flag(ip))))
         features_output.flush()
     features_output.close()
-
