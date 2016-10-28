@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 class Context:
+    table_name="trainset"
     ip_total = None
     media_info_file=open("media_info.csv")
     media_info=dict()

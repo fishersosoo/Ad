@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from Feature_builder.RawDataModel import RawData
-from Feature_builder.Helper import Context
 import mysql.connector
 import os
 import pickle
+from Helper import Context
 
-raw_data_file="tainset"
+raw_data_file = "tainset"
+
 
 def get_all_ip(table):
     """
@@ -40,34 +41,7 @@ def get_total_click(ip):
     :param ip: str
     :rtype: int
     """
-    if Context.ip_total==None:
-        if os.path.exists("ip_click"):
-            # has calculated ip_click, load
-            Context.ip_total=dict()
-            file=open("ip_click",'rb')
-            Context.ip_total=pickle.loads(file)
-            return Context.ip_total[ip]
-        else:
-            # has not calculated the
-            Context.ip_total = dict()
-            a=dict()
-            file=open(raw_data_file)
-            line  = file.readline()
-            index=0
-            while line!="":
-                model=RawData(line)
-                if Context.ip_total.has_key(model.ip):
-                    Context.ip_total[ip]=1
-                else:
-                    Context.ip_total[ip]+=1
-                line=line.readlines
-    else:
-        return Context.ip_total[ip]
-
-
-
     pass
-
 
 def get_avg_click_sec(ip):
     """
