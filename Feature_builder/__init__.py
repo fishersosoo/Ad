@@ -2,6 +2,7 @@
 
 from Feature_builder.RawDataModel import RawData
 import mysql.connector
+import os
 
 raw_data_file="tainset"
 def get_all_ip(table):
@@ -36,6 +37,11 @@ def get_total_click(ip):
     :param ip: str
     :rtype: int
     """
+    if os.path.exists("ip_click.csv"):
+        # has calculated ip_click, look for
+        file=open("ip_click.csv")
+        line=file.readline()
+
 
     pass
 
