@@ -2,6 +2,7 @@
 from Feature_builder import *
 
 if __name__ == "__main__":
+    Context.build()
     # change the table name to read the raw data from database
     data_source = "trainset"
     features_output = open(r"{0}_features.csv".format(data_source), 'w')
