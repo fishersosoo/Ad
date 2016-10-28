@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+import json
 class RawData:
     def __init__(self, line):
-        # line = ""
         line.replace("\n", "")
         line = line.split(",")
         self.rank = int(line[0])
@@ -26,3 +26,6 @@ class RawData:
         self.os = line[19]
         self.born_time = int(line[20])
         self.flag = bool(line[21])
+
+    def __str__(self):
+        return json.dumps(self)
