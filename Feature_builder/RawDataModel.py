@@ -28,4 +28,4 @@ class RawData:
         self.flag = bool(line[21])
 
     def __str__(self):
-        return json.dumps(self)
+        return json.dumps(self.__dict__)
