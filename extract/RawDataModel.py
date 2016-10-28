@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
+
+
 class RawData:
     def __init__(self, line):
         line.replace("\n", "")
