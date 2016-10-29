@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+import os
 from abc import ABCMeta, abstractmethod
 from extract.RawDataModel import RawData
+import pickle
+import json
+import numpy
 
 
 class Extractor(object):
@@ -16,14 +20,3 @@ class Extractor(object):
     def merge():
         pass
 
-
-class TimeExtractor(Extractor):
-    @staticmethod
-
-    def extract(line):
-        model=RawData(line)
-        pass
-
-    @staticmethod
-    def merge():
-        pass
