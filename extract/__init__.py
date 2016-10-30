@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
 from abc import ABCMeta, abstractmethod
 from extract.RawDataModel import RawData
-import os
+
+import pickle
 import json
+import numpy
 
 class Extractor(object):
     __metaclass__ = ABCMeta
