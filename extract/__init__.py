@@ -61,8 +61,8 @@ class Extractor(object):
     @staticmethod
     def read_line(fid):
         # 从文件中读取一行并返回 dict
-        line=fid.readline()
-        if line=="":
+        line = fid.readline()
+        if line == "":
             fid.close()
             return None
         return json.loads(line.replace("\n",""))
