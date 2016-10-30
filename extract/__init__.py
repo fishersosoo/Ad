@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from abc import ABCMeta, abstractmethod
 from extract.RawDataModel import RawData
-
+import os
+import json
 
 class Extractor(object):
     __metaclass__ = ABCMeta
@@ -15,6 +16,26 @@ class Extractor(object):
     @staticmethod
     def merge():
         pass
+
+    @staticmethod
+    def solid(key, field_list, fid):
+        # 将 field_list 作为值构造一个 dict, append 到本地文件中（不是二进制，一行一个 dict 的 json ）
+        key_value = dict()
+        key_value[key] = field_list
+        fid.writelines(json.dumps(key_value))
+        fid.write("\n")
+
+    @staticmethod
+    def create_file(file_name)
+        # 判断文件是否存在，存在则删除，以 append 的方式打开文件，并返回 fid
+        if os.path.exists(file_name):
+            os.remove(file_name)
+        _file = open(file_name,'a+')
+
+    @staticmethod
+    def read_line(fid):
+        # 从文件中读取一行并返回 dict
+        return json.loads(fid.readline().replace("\n",""))
 
 
 class TimeExtractor(Extractor):
