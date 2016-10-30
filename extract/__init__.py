@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 from abc import ABCMeta, abstractmethod
-from extract.RawDataModel import RawData
+from extract import RawDataModel
+from RawDataModel import RawData
+
 
 import pickle
 import json
@@ -11,19 +13,16 @@ class Extractor(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    @staticmethod
-    def extract(line):
+    def extract(self, line):
         pass
 
     @abstractmethod
-    @staticmethod
-    def merge():
+    def merge(self):
         pass
 
     @abstractmethod
-    @staticmethod
     # 当第一次使用 Extractor 时应该调用该方法，创建本地缓存文件
-    def init():
+    def init(self):
         # create_file(file_name)
         pass
 
@@ -36,11 +35,9 @@ class Extractor(object):
         fid.write("\n")
 
     @staticmethod
-    def create_file(file_name)
-        # 判断文件是否存在，存在则删除，以 append 的方式打开文件，并返回 fid
-        if os.path.exists(file_name):
-            os.remove(file_name)
-        _file = open(file_name,'a+')
+    def loadli_cache(file_name):
+        # 判断文件是否存在，不存在则打开
+        return open(file_name,'a+')
 
     @staticmethod
     def read_line(fid):
@@ -50,7 +47,6 @@ class Extractor(object):
 
 class TimeExtractor(Extractor):
     @staticmethod
-
     def extract(line):
         model=RawData(line)
         pass
