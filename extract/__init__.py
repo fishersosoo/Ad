@@ -20,6 +20,13 @@ class Extractor(object):
     def merge():
         pass
 
+    @abstractmethod
+    @staticmethod
+    # 当第一次使用 Extractor 时应该调用该方法，创建本地缓存文件
+    def init():
+        # create_file(file_name)
+        pass
+
     @staticmethod
     def solid(key, field_list, fid):
         # 将 field_list 作为值构造一个 dict, append 到本地文件中（不是二进制，一行一个 dict 的 json ）
