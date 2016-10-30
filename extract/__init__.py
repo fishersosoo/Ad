@@ -32,7 +32,7 @@ class Extractor(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def extract(self, line):
+    def extract(line):
         pass
 
     @abstractmethod
@@ -61,7 +61,11 @@ class Extractor(object):
     @staticmethod
     def read_line(fid):
         # 从文件中读取一行并返回 dict
-        return json.loads(fid.readline().replace("\n",""))
+        line=fid.readline()
+        if line=="":
+            fid.close()
+            return None
+        return json.loads(line.replace("\n",""))
 
 
 class TimeExtractor(Extractor):
