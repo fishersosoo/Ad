@@ -34,7 +34,7 @@ class Extractor(object):
         pass
 
     @abstractmethod
-    def merge():
+    def merge(self):
         pass
 
     @abstractmethod
@@ -53,7 +53,7 @@ class Extractor(object):
         fid.write("\n")
 
     @staticmethod
-    def create_file(file_name)
+    def create_file(file_name):
         # 判断文件是否存在，存在则删除，以 append 的方式打开文件，并返回 fid
         if os.path.exists(file_name):
             os.remove(file_name)
