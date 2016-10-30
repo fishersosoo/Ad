@@ -10,8 +10,8 @@ import numpy as np
 class CookieExtractor(Extractor):
     raw_cache_name = "cookie_raw_cache_file"
     cache_name = "cookie_cache_file"
+    fid = None
     cookie_index = 0
-
     cookie_num_index = 0
 
     @staticmethod
