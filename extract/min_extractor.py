@@ -17,7 +17,7 @@ class MinExtractor(Extractor):
         if os.path.exists(MinExtractor.bin_file):
             os.remove(MinExtractor.bin_file)
 
-    @staticmethod
+
     def get_total_click(self, ip):
         # type: (str) -> int
         """
@@ -47,7 +47,7 @@ class MinExtractor(Extractor):
             total_click_dict_file.close()
         return total_click_dict[ip]
 
-    @staticmethod
+
     def get_max_click_min(self, ip):
         # type: (str) -> int
         """
@@ -77,7 +77,7 @@ class MinExtractor(Extractor):
             max_click_min_dict_file.close()
         return max_click_min_dict[ip]
 
-    @staticmethod
+
     def get_var_click_min(self, ip):
         # type: (str) -> int
         """
@@ -107,7 +107,7 @@ class MinExtractor(Extractor):
             var_click_min_dict_file.close()
         return var_click_min_dict[ip]
 
-    @staticmethod
+
     def get_avg_click_min(self, ip):
         # type: (str) -> float
         ip_click_min = dict()
@@ -116,8 +116,8 @@ class MinExtractor(Extractor):
         # noinspection PyTypeChecker
         return numpy.float64(numpy.mean(ip_click_min[ip])) / MinExtractor.get_total_click(ip)
 
-    @staticmethod
-    def extract(line):
+
+    def extract(self,line):
         model = RawData(line)
         row = [model.ip, model.timestamps]
         if os.path.exists(MinExtractor.file_name_temp):
@@ -131,8 +131,8 @@ class MinExtractor(Extractor):
             _file.write('\n')
             _file.flush()
 
-    @staticmethod
-    def merge():
+
+    def merge(self):
         ip_click_min = dict()
         # dict<ip,list<click times>>
         _file = open(MinExtractor.file_name_temp, 'r')

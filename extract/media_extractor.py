@@ -17,7 +17,6 @@ class MediaExtractor(Extractor):
         if os.path.exists(MediaExtractor.bin_file):
             os.remove(MediaExtractor.bin_file)
 
-    @staticmethod
     def get_total_click(self, ip):
         # type: (str) -> int
         """
@@ -47,7 +46,6 @@ class MediaExtractor(Extractor):
             total_click_dict_file.close()
         return total_click_dict[ip]
 
-    @staticmethod
     def get_max_click_media(self, ip):
         # type: (str) -> int
         """
@@ -77,7 +75,6 @@ class MediaExtractor(Extractor):
             max_click_media_dict_file.close()
         return max_click_media_dict[ip]
 
-    @staticmethod
     def get_var_click_media(self, ip):
         # type: (str) -> int
         """
@@ -107,7 +104,6 @@ class MediaExtractor(Extractor):
             var_click_sec_dict_file.close()
         return var_click_sec_dict[ip]
 
-    @staticmethod
     def get_avg_click_media(self, ip):
         # type: (str) -> float
         ip_click_sec = dict()
@@ -116,7 +112,6 @@ class MediaExtractor(Extractor):
         # noinspection PyTypeChecker
         return numpy.float64(numpy.mean(ip_click_sec[ip].values())) / MediaExtractor.get_total_click(ip)
 
-    @staticmethod
     def get_count_media(self,ip):
         if os.path.exists("count_click_media"):
             # has calculated
@@ -142,8 +137,7 @@ class MediaExtractor(Extractor):
             var_click_sec_dict_file.close()
         return var_click_sec_dict[ip]
 
-    @staticmethod
-    def extract(line):
+    def extract(self,line):
         model = RawData(line)
         row = [model.ip, model.media_id]
         if os.path.exists(MediaExtractor.file_name_temp):
@@ -157,8 +151,7 @@ class MediaExtractor(Extractor):
             _file.write('\n')
             _file.flush()
 
-    @staticmethod
-    def merge():
+    def merge(self):
         ip_click_media = dict()
         # dict<ip,dict<media_id, click times>>
         _file = open(MediaExtractor.file_name_temp, 'r')

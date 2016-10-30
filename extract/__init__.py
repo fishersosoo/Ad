@@ -9,6 +9,25 @@ import pickle
 import json
 import numpy
 
+
+class Context:
+    media_info_file = None
+    media_info_table = dict()
+
+    # dict<media_id,list>
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def load_media_info_file(self, csv_file):
+        line = csv_file.readline()
+        while line != "":
+            line = line.replace("\n", "")
+            line = line.splite(",")
+            Context.media_info_table[line[0]] = [line[1], line[2], line[3], line[4]]
+            line = csv_file.readline
+
+
 class Extractor(object):
     __metaclass__ = ABCMeta
 
@@ -35,7 +54,7 @@ class Extractor(object):
         fid.write("\n")
 
     @staticmethod
-    def loadli_cache(file_name):
+    def load_cache(file_name):
         # 判断文件是否存在，不存在则打开
         return open(file_name,'a+')
 
