@@ -26,12 +26,12 @@ class PlacementExtractor(Extractor):
     @staticmethod
     def merge():
         fid = open(PlacementExtractor.raw_cache_name, 'r')
-        tuple = Extractor.read_line(fid)
+        placement_tuple = Extractor.read_line(fid)
 
         placement_info_dict = dict()
 
-        while tuple != None:
-            for ip in tuple:
+        while placement_tuple is not None:
+            for ip in placement_tuple:
                 if placement_info_dict.has_key(ip):
                     placement_info = placement_info_dict[ip]
                     placement_num = placement_info[PlacementExtractor.placement_num_index]
