@@ -41,7 +41,7 @@ class CookieExtractor(Extractor):
 
         while cookie_tuple is not None:
             # 统计该 IP 的所有点击的 cookie 以及其数量
-            for ip in tuple:
+            for ip in cookie_tuple:
                 cookie = cookie_tuple[ip][CookieExtractor.cookie_index]
                 if ip in cookie_info_dict.keys():
                     cookie_info = cookie_info_dict[ip]
