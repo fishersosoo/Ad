@@ -63,6 +63,14 @@ class Extractor(object):
         # 从文件中读取一行并返回 dict
         return json.loads(fid.readline().replace("\n",""))
 
+    @staticmethod
+    def read_cache(file_name):
+        # 从文件中读取一行并返回 cache
+        fid = open(file_name, 'r')
+        cache = json.loads(fid.readline().replace("\n",""))
+        fid.close()
+        return cache
+
 
 class TimeExtractor(Extractor):
     @staticmethod

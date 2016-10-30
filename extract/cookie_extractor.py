@@ -31,11 +31,11 @@ class CookieExtractor(Extractor):
     @staticmethod
     def merge():
         fid = open(CookieExtractor.raw_cache_name, 'r')
-        tuple = Extractor.read_line(fid)
+        cookie_tuple = Extractor.read_line(fid)
 
         cookie_info_dict = dict()
 
-        while tuple != None:
+        while cookie_tuple != None:
             # 统计该 IP 的所有点击的 cookie 以及其数量
             for ip in tuple:
                 if cookie_info_dict.has_key(ip):
@@ -49,21 +49,15 @@ class CookieExtractor(Extractor):
                     cookie_info = list()
                     cookie_num = dict()
                     cookie_info.append(cookie_num)
-                    cookie_num[tuple[ip]] = 1
+                    cookie_num[cookie_tuple[ip]] = 1
                     cookie_info_dict[ip] = cookie_info
 
         fid = open(CookieExtractor.cache_name, 'w')
         fid.writelines(json.dumps(cookie_info_dict))
 
     @staticmethod
-    def get_cookie_info_dict():
-        fid = open(CookieExtractor.cache_name, 'r')
-        cookie_info_dict = json.loads(fid.readline().replace('\n', ''))
-        return cookie_info_dict
-
-    @staticmethod
     def get_cookie_num_info(ip):
-        cookie_info_dict = CookieExtractor.get_cookie_info_dict()
+        cookie_info_dict = Extractor.read_cache(CookieExtractor.cache_name)
         cookie_num_info = cookie_info_dict[ip][CookieExtractor.cookie_num_index]
         return cookie_num_info
 
@@ -85,3 +79,4 @@ class CookieExtractor(Extractor):
 
         cookie_std = np.reshape(click_nums, (-1, 1)).std()
         return cookie_std
+
