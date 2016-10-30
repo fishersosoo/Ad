@@ -17,7 +17,7 @@ class HourExtractor(Extractor):
         if os.path.exists(HourExtractor.bin_file):
             os.remove(HourExtractor.bin_file)
 
-    @staticmethod
+
     def get_total_click(self, ip):
         # type: (str) -> int
         """
@@ -47,7 +47,7 @@ class HourExtractor(Extractor):
             total_click_dict_file.close()
         return total_click_dict[ip]
 
-    @staticmethod
+
     def get_max_click_hour(self, ip):
         # type: (str) -> int
         """
@@ -77,7 +77,7 @@ class HourExtractor(Extractor):
             max_click_hour_dict_file.close()
         return max_click_hour_dict[ip]
 
-    @staticmethod
+
     def get_var_click_hour(self, ip):
         # type: (str) -> int
         """
@@ -107,7 +107,7 @@ class HourExtractor(Extractor):
             var_click_hour_dict_file.close()
         return var_click_hour_dict[ip]
 
-    @staticmethod
+
     def get_avg_click_hour(self, ip):
         # type: (str) -> float
         ip_click_hour = dict()
@@ -116,8 +116,8 @@ class HourExtractor(Extractor):
         # noinspection PyTypeChecker
         return numpy.float64(numpy.mean(ip_click_hour[ip])) / HourExtractor.get_total_click(ip)
 
-    @staticmethod
-    def extract(line):
+
+    def extract(self,line):
         model = RawData(line)
         row = [model.ip, model.timestamps]
         if os.path.exists(HourExtractor.file_name_temp):
@@ -131,7 +131,7 @@ class HourExtractor(Extractor):
             _file.write('\n')
             _file.flush()
 
-    @staticmethod
+
     def merge():
         ip_click_hour = dict()
         # dict<ip,list<click times>>
